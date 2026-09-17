@@ -1,0 +1,19 @@
+# robots.txt — D'Suka Cafe Digital Menu
+# Controls which pages web crawlers (bots) are allowed to access.
+# Reference: https://www.robotstxt.org/
+
+# Allow all legitimate crawlers to access public content
+User-agent: *
+Allow: /index.html
+Allow: /assets/
+
+# Deny access to the server file and any config files
+Disallow: /server.js
+Disallow: /package.json
+Disallow: /package-lock.json
+Disallow: /.env
+Disallow: /.gitignore
+Disallow: /node_modules/
+
+# Crawl-delay: be polite to servers (in seconds)
+Crawl-delay: 10

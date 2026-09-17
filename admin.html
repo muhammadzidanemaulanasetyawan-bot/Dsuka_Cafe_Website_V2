@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Login — D'Suka Cafe</title>
+
+  <!-- Security Meta Tags -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <!-- Prevent search engines from indexing the admin page -->
+  <meta name="robots" content="noindex, nofollow">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;800&family=Playfair+Display:wght@600;700&display=swap');
+
+    /* ==========================================================================
+       1. DESIGN SYSTEM — mengikuti variabel yang sama dengan index.html
+       ========================================================================== */
+    :root {
+      --teal:  #16b7b5;
+      --deep:  #08798e;
+      --dark:  #103b43;
+      --cream: #fffaf2;
+      --muted: #718287;
+      --line:  #e6eeee;
+    }
+
+    /* ==========================================================================
+       2. BASE & RESET
+       ========================================================================== */
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--cream);
+      font-family: 'DM Sans', sans-serif;
+      color: var(--dark);
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button, input {
+      font: inherit;
+      cursor: pointer;
+    }
+
+    /* ==========================================================================
+       3. HEADER / BRANDING
+       ========================================================================== */
+    .admin-nav {
+      background: rgba(255, 250, 242, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font: 700 26px 'Playfair Display', serif;
+    }
+
+    .logo i {
+      color: var(--teal);
+      font-style: normal;
+    }
+
+    .back-link {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover {
+      color: var(--teal);
+    }
+
+    /* ==========================================================================
+       4. PAGE LAYOUT
+       ========================================================================== */
+    .page {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    /* ==========================================================================
+       5. LOGIN CARD
+       ========================================================================== */
+    .login-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 20px 60px rgba(16, 59, 67, 0.1);
+      overflow: hidden;
+    }
+
+    /* Card top accent bar */
+    .card-accent {
+      height: 5px;
+      background: linear-gradient(90deg, var(--teal), var(--deep));
+    }
+
+    .card-body {
+      padding: 36px 36px 32px;
+    }
+
+    /* Icon shield */
+    .shield {
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      background: rgba(22, 183, 181, 0.1);
+      display: grid;
+      place-items: center;
+      font-size: 26px;
+      margin-bottom: 20px;
+    }
+
+    .card-body h1 {
+      font: 700 28px 'Playfair Display', serif;
+      margin: 0 0 6px;
+      letter-spacing: -0.5px;
+    }
+
+    .card-body p {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0 0 28px;
+      line-height: 1.6;
+    }
+
+    /* ==========================================================================
+       6. FORM FIELDS
+       ========================================================================== */
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .field label {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    .input-wrap {
+      position: relative;
+    }
+
+    .input-wrap .icon {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 17px;
+      pointer-events: none;
+      opacity: 0.5;
+    }
+
+    .field input {
+      width: 100%;
+      padding: 13px 16px 13px 44px;
+      border: 1.5px solid var(--line);
+      border-radius: 14px;
+      font-size: 15px;
+      background: var(--cream);
+      color: var(--dark);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+
+    .field input:focus {
+      border-color: var(--teal);
+      background: white;
+      box-shadow: 0 0 0 3px rgba(22, 183, 181, 0.13);
+    }
+
+    .field input.invalid {
+      border-color: #e05252;
+      box-shadow: 0 0 0 3px rgba(224, 82, 82, 0.1);
+    }
+
+    .field-err {
+      font-size: 12px;
+      font-weight: 600;
+      color: #e05252;
+      display: none;
+    }
+
+    .field-err.show {
+      display: block;
+    }
+
+    /* Toggle password visibility */
+    .toggle-pw {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      color: var(--muted);
+      padding: 4px;
+      line-height: 1;
+    }
+
+    .toggle-pw:hover {
+      color: var(--teal);
+    }
+
+    /* Forgot password */
+    .forgot {
+      text-align: right;
+      margin: -8px 0 20px;
+    }
+
+    .forgot a {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--teal);
+    }
+
+    /* ==========================================================================
+       7. SUBMIT BUTTON
+       ========================================================================== */
+    .btn-login {
+      width: 100%;
+      padding: 15px;
+      border: 0;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--teal), var(--deep));
+      color: white;
+      font: 800 16px 'DM Sans', sans-serif;
+      transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .btn-login:hover {
+      opacity: 0.92;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(8, 121, 142, 0.38);
+    }
+
+    .btn-login:active {
+      transform: translateY(0);
+    }
+
+    /* ==========================================================================
+       8. ALERT BOX (error message)
+       ========================================================================== */
+    .alert {
+      border-radius: 12px;
+      padding: 13px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      display: none;
+    }
+
+    .alert.error {
+      background: rgba(224, 82, 82, 0.1);
+      color: #c0392b;
+      border: 1px solid rgba(224, 82, 82, 0.25);
+    }
+
+    .alert.show {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* ==========================================================================
+       9. FOOTER
+       ========================================================================== */
+    .card-foot {
+      padding: 18px 36px 24px;
+      border-top: 1px solid var(--line);
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .card-foot a {
+      font-weight: 700;
+      color: var(--teal);
+    }
+
+    /* ==========================================================================
+       10. RESPONSIVE
+       ========================================================================== */
+    @media (max-width: 480px) {
+      .card-body {
+        padding: 28px 24px 24px;
+      }
+      .card-foot {
+        padding: 16px 24px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation / Branding Bar -->
+  <nav class="admin-nav">
+    <a class="logo" href="/">D'Suka<i>.</i></a>
+    <a class="back-link" href="/">← Kembali ke Menu</a>
+  </nav>
+
+  <!-- Page Content -->
+  <main class="page">
+    <div class="login-card">
+
+      <!-- Top accent gradient line -->
+      <div class="card-accent"></div>
+
+      <!-- Card Body -->
+      <div class="card-body">
+
+        <!-- Icon -->
+        <div class="shield" aria-hidden="true">🔐</div>
+
+        <h1>Admin Login</h1>
+        <p>Halaman ini hanya untuk admin D'Suka Cafe. Masukkan kredensial Anda untuk melanjutkan.</p>
+
+        <!-- Error Alert -->
+        <div class="alert error" id="alertError" role="alert">
+          <span>⚠️</span>
+          <span id="alertMsg">Username atau password salah.</span>
+        </div>
+
+        <!-- Login Form -->
+        <form id="loginForm" onsubmit="handleLogin(event)" novalidate autocomplete="on">
+
+          <!-- Username -->
+          <div class="field">
+            <label for="adminUser">Username</label>
+            <div class="input-wrap">
+              <span class="icon">👤</span>
+              <input
+                type="text"
+                id="adminUser"
+                name="username"
+                placeholder="Masukkan username"
+                autocomplete="username"
+                required
+              >
+            </div>
+            <span class="field-err" id="errUser">Username tidak boleh kosong.</span>
+          </div>
+
+          <!-- Password -->
+          <div class="field">
+            <label for="adminPass">Password</label>
+            <div class="input-wrap">
+              <span class="icon">🔒</span>
+              <input
+                type="password"
+                id="adminPass"
+                name="password"
+                placeholder="Masukkan password"
+                autocomplete="current-password"
+                required
+              >
+              <button
+                type="button"
+                class="toggle-pw"
+                id="togglePw"
+                aria-label="Tampilkan / sembunyikan password"
+                onclick="togglePassword()"
+              >👁️</button>
+            </div>
+            <span class="field-err" id="errPass">Password tidak boleh kosong.</span>
+          </div>
+
+          <!-- Forgot Password -->
+          <div class="forgot">
+            <a href="#" onclick="alert('Hubungi pengelola sistem untuk reset password.'); return false;">
+              Lupa password?
+            </a>
+          </div>
+
+          <!-- Submit -->
+          <button type="submit" class="btn-login" id="btnLogin">
+            🔓 Masuk
+          </button>
+
+        </form>
+      </div><!-- /.card-body -->
+
+      <!-- Card Footer -->
+      <div class="card-foot">
+        Bukan admin? <a href="/">Kembali ke Digital Menu</a>
+      </div>
+
+    </div><!-- /.login-card -->
+  </main>
+
+  <!-- =========================================================================
+       ADMIN LOGIN LOGIC
+       Catatan: Ini adalah autentikasi frontend-only (UI demo).
+       Untuk produksi, validasi HARUS dilakukan di server/backend.
+       ========================================================================= -->
+  <script>
+    'use strict';
+
+    /**
+     * Toggle visibilitas password field.
+     */
+    function togglePassword() {
+      const input  = document.getElementById('adminPass');
+      const button = document.getElementById('togglePw');
+      const isHidden = input.type === 'password';
+      input.type     = isHidden ? 'text' : 'password';
+      button.textContent = isHidden ? '🙈' : '👁️';
+    }
+
+    /**
+     * Tampilkan atau sembunyikan pesan error field.
+     * @param {string} inputId
+     * @param {string} errId
+     * @param {boolean} isValid
+     */
+    function setErr(inputId, errId, isValid) {
+      const el  = document.getElementById(inputId);
+      const err = document.getElementById(errId);
+      if (isValid) {
+        el.classList.remove('invalid');
+        err.classList.remove('show');
+      } else {
+        el.classList.add('invalid');
+        err.classList.add('show');
+      }
+    }
+
+    /**
+     * Tampilkan pesan error utama (alert box).
+     * @param {string} msg
+     */
+    function showAlert(msg) {
+      const box = document.getElementById('alertError');
+      document.getElementById('alertMsg').textContent = msg;
+      box.classList.add('show');
+    }
+
+    /**
+     * Sembunyikan alert box.
+     */
+    function hideAlert() {
+      document.getElementById('alertError').classList.remove('show');
+    }
+
+    /**
+     * Handle form submit login.
+     * CATATAN KEAMANAN: Autentikasi nyata harus dilakukan di sisi server.
+     * Halaman ini hanya merupakan UI frontend.
+     * @param {Event} e
+     */
+    function handleLogin(e) {
+      e.preventDefault();
+      hideAlert();
+
+      const user = document.getElementById('adminUser').value.trim();
+      const pass = document.getElementById('adminPass').value;
+
+      // ── Validasi field kosong ──────────────────────────────────────────
+      let valid = true;
+
+      if (!user) {
+        setErr('adminUser', 'errUser', false);
+        valid = false;
+      } else {
+        setErr('adminUser', 'errUser', true);
+      }
+
+      if (!pass) {
+        setErr('adminPass', 'errPass', false);
+        valid = false;
+      } else {
+        setErr('adminPass', 'errPass', true);
+      }
+
+      if (!valid) return;
+
+      // ── Loading state ──────────────────────────────────────────────────
+      const btn = document.getElementById('btnLogin');
+      btn.textContent = '⏳ Memverifikasi...';
+      btn.disabled = true;
+
+      // Simulasi delay proses autentikasi (UI demo)
+      // Ganti bagian ini dengan fetch() ke endpoint backend yang sesungguhnya.
+      setTimeout(function() {
+        btn.innerHTML = '🔓 Masuk';
+        btn.disabled = false;
+
+        // Tampilkan pesan: autentikasi backend belum terhubung
+        showAlert('Sistem autentikasi belum terhubung ke backend. Hubungi pengelola sistem.');
+      }, 900);
+    }
+
+    // Sembunyikan alert saat user mulai mengetik
+    document.getElementById('adminUser').addEventListener('input', hideAlert);
+    document.getElementById('adminPass').addEventListener('input', hideAlert);
+  </script>
+
+</body>
+</html>
