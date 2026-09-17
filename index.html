@@ -1567,10 +1567,10 @@
   <div class="info-strip">
     <div class="info-strip-inner">
       <div class="info-col">
-        <div class="info-icon">🕐</div>
+        <div class="info-icon">•</div>
         <div>
           <span class="info-label">Jam Buka</span>
-          <span class="info-value">09.00 – 22.00 WIB<br>Setiap Hari</span>
+          <span class="info-value">11:00 - 21:00 WIB<br>Setiap Hari</span>
         </div>
       </div>
       <div class="info-col">
@@ -1581,17 +1581,17 @@
         </div>
       </div>
       <div class="info-col">
-        <div class="info-icon">💬</div>
+        <div class="info-icon">•</div>
         <div>
           <span class="info-label">Order & Reservasi</span>
           <span class="info-value">Via WhatsApp<br>Langsung Konfirmasi</span>
         </div>
       </div>
       <div class="info-col">
-        <div class="info-icon">📍</div>
+        <div class="info-icon">•</div>
         <div>
           <span class="info-label">Lokasi</span>
-          <span class="info-value">@Dsuka_cafe<br>Temukan di Maps</span>
+          <span class="info-value">@Dsuka_cafe<br><a href="https://maps.app.goo.gl/euGuKhN3TuWgU1mJ6" target="_blank" rel="noopener noreferrer" style="color:var(--copper-light);text-decoration:none">Temukan di Maps</a></span>
         </div>
       </div>
     </div>
@@ -1607,7 +1607,7 @@
         <h2 class="section-title">Menu <em style="font-style:italic;color:var(--copper)">Favorit</em></h2>
         <p class="section-sub">Temukan menu dengan cepat dan pesan tanpa ribet.</p>
       </div>
-      <input class="search" id="search" placeholder="🔎  Cari menu...">
+      <input class="search" id="search" placeholder="•  Cari menu...">
     </div>
 
     <!-- Category Filters -->
@@ -1892,12 +1892,12 @@
           bersama orang tersayang.
         </p>
         <div class="ambience-tags">
-          <span class="ambience-tag">🏭 Industrial Rustic</span>
+          <span class="ambience-tag">• Industrial Rustic</span>
           <span class="ambience-tag">🪵 Dark Wood</span>
-          <span class="ambience-tag">🌿 Plant Corner</span>
-          <span class="ambience-tag">💡 Warm Lighting</span>
+          <span class="ambience-tag">• Plant Corner</span>
+          <span class="ambience-tag">• Warm Lighting</span>
           <span class="ambience-tag">🪑 Indoor & Outdoor</span>
-          <span class="ambience-tag">☕ Cozy Vibes</span>
+          <span class="ambience-tag">• Cozy Vibes</span>
         </div>
       </div>
 
@@ -1923,27 +1923,27 @@
       <div>
         <span class="footer-col-title">Ikuti Kami</span>
         <a class="footer-link" href="https://instagram.com/Dsuka_cafe" target="_blank" rel="noopener noreferrer">
-          <span class="fi">📷</span> @Dsuka_cafe
+          <span class="fi">•</span> @Dsuka_cafe
         </a>
         <a class="footer-link" href="#" onclick="openCart(); return false;">
-          <span class="fi">🛒</span> Order Online
+          <span class="fi">•</span> Order Online
         </a>
         <a class="footer-link" href="#" onclick="openReservasi(); return false;">
-          <span class="fi">📅</span> Reservasi Meja
+          <span class="fi">•</span> Reservasi Meja
         </a>
       </div>
 
       <!-- Contact -->
       <div>
         <span class="footer-col-title">Hubungi Kami</span>
-        <a class="footer-link" href="#">
-          <span class="fi">💬</span> WhatsApp D'Suka Cafe
+        <a class="footer-link" href="https://wa.me/628132565559" target="_blank" rel="noopener noreferrer">
+          <span class="fi">•</span> WhatsApp D'Suka Cafe
+        </a>
+        <a class="footer-link" href="https://maps.app.goo.gl/euGuKhN3TuWgU1mJ6" target="_blank" rel="noopener noreferrer">
+          <span class="fi">•</span> Temukan di Google Maps
         </a>
         <a class="footer-link" href="#">
-          <span class="fi">📍</span> Temukan di Google Maps
-        </a>
-        <a class="footer-link" href="#">
-          <span class="fi">🕐</span> Buka 09.00 – 22.00 WIB
+          <span class="fi">•</span> Buka 11:00 - 21:00 WIB
         </a>
       </div>
 
@@ -1952,7 +1952,7 @@
     <hr class="footer-divider">
     <div class="footer-bottom">
       <span>© 2026 D'Suka Cafe. All rights reserved.</span>
-      <span>Digital Menu & Reservasi — Powered with ☕</span>
+      <span>Digital Menu & Reservasi — Powered with •</span>
     </div>
   </footer>
 
@@ -1975,9 +1975,13 @@
           <label for="cartCustomerName" style="display: block; margin-bottom: 6px; font-size: 0.9rem; color: var(--cream-dim);">Nama Anda <span style="color: var(--copper-light);">*</span></label>
           <input type="text" id="cartCustomerName" placeholder="Contoh: Budi" style="width: 100%; padding: 10px 14px; border-radius: 8px; border: 1px solid rgba(239,231,216,0.2); background: rgba(0,0,0,0.2); color: var(--cream); font-family: inherit; font-size: 1rem; box-sizing: border-box;" autocomplete="name">
         </div>
+        <div style="margin-bottom: 15px; text-align: left;">
+          <label for="cartNotes" style="display: block; margin-bottom: 6px; font-size: 0.9rem; color: var(--cream-dim);">Catatan Tambahan (Opsional)</label>
+          <textarea id="cartNotes" rows="2" placeholder="Contoh: Pedas, pisah es, dll." style="width: 100%; padding: 10px 14px; border-radius: 8px; border: 1px solid rgba(239,231,216,0.2); background: rgba(0,0,0,0.2); color: var(--cream); font-family: inherit; font-size: 1rem; box-sizing: border-box; resize: vertical;"></textarea>
+        </div>
         <button class="wa" onclick="checkout()">Pesan via WhatsApp</button>
         <div class="note">
-          Nomor WhatsApp demo: <b>6281234567890</b>. Ganti di JavaScript dengan nomor asli D'Suka Cafe.
+          Nomor WhatsApp: <b>628132565559</b>
         </div>
       </div>
     </aside>
@@ -1996,7 +2000,7 @@
       <!-- Header -->
       <div class="res-head">
         <div class="res-head-text">
-          <h2 id="resTitle">Reservasi Meja 📅</h2>
+          <h2 id="resTitle">Reservasi Meja •</h2>
           <small>Isi data di bawah, lalu kirim via WhatsApp</small>
         </div>
         <button class="close" onclick="closeReservasi()" aria-label="Tutup">×</button>
@@ -2059,14 +2063,14 @@
             <div class="seat-opt">
               <input type="radio" name="resTempat" id="resIndoor" value="Indoor">
               <label for="resIndoor">
-                <span class="si">🏠</span>
+                <span class="si">•</span>
                 Indoor
               </label>
             </div>
             <div class="seat-opt">
               <input type="radio" name="resTempat" id="resOutdoor" value="Outdoor">
               <label for="resOutdoor">
-                <span class="si">🌿</span>
+                <span class="si">•</span>
                 Outdoor
               </label>
             </div>
@@ -2085,7 +2089,7 @@
       <!-- Footer: Submit -->
       <div class="res-footer">
         <button class="btn-res" id="btnReservasi" onclick="submitReservasi()">
-          💬 Reservasi via WhatsApp
+          • Reservasi via WhatsApp
         </button>
         <p class="res-hint">
           Setelah klik tombol di atas, WhatsApp akan terbuka dengan pesan reservasi yang sudah terisi otomatis.
@@ -2101,7 +2105,7 @@
        ========================================================= -->
   <script>
     // Config: Nomor WhatsApp Tujuan Checkout
-    const WA_NUMBER = "6281234567890"; // GANTI dengan nomor WhatsApp D'Suka Cafe
+    const WA_NUMBER = "628132565559"; // Nomor WhatsApp D'Suka Cafe
 
     // ── SECURITY: HTML Escape Function ──────────────────────────────────────────
     // Prevents XSS attacks when inserting dynamic content via innerHTML.
@@ -2166,7 +2170,7 @@
 
       let cartList = document.getElementById("list");
       if (!cart.length) {
-        cartList.innerHTML = '<div style="text-align:center;color:var(--cream-dim);padding:50px 10px;opacity:0.6">Keranjang masih kosong ☕</div>';
+        cartList.innerHTML = '<div style="text-align:center;color:var(--cream-dim);padding:50px 10px;opacity:0.6">Keranjang masih kosong •</div>';
         return;
       }
 
@@ -2214,7 +2218,12 @@
 
       let lines = cart.map(item => "• " + item.name + " x" + item.qty + " = " + money(item.price * item.qty)).join("\n");
       let total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
-      let msg = "Halo D'Suka Cafe, saya mau pesan:\n\n" + lines + "\n\nTotal: " + money(total) + "\n\nNama: " + customerName + "\nMeja/Alamat:\nCatatan:";
+      let customerNotes = document.getElementById("cartNotes").value.trim();
+      
+      let msg = "Halo D'Suka Cafe, saya mau pesan:\n\n" + lines + "\n\nTotal: " + money(total) + "\n\nNama: " + customerName;
+      if (customerNotes) {
+        msg += "\nCatatan: " + customerNotes;
+      }
       // SECURITY: noopener prevents the new tab from accessing window.opener
       window.open("https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(msg), "_blank", "noopener,noreferrer");
     }
@@ -2423,18 +2432,18 @@
 
       // Format pesan WhatsApp yang rapi
       const pesan =
-        "Halo D'Suka Cafe! 👋 Saya ingin melakukan *reservasi meja*.\n\n" +
+        "Halo D'Suka Cafe! • Saya ingin melakukan *reservasi meja*.\n\n" +
         "━━━━━━━━━━━━━━━━━━━━━━━\n" +
-        "👤 *Nama*      : " + data.nama + "\n" +
-        "📱 *WhatsApp*  : " + data.wa   + "\n" +
+        "• *Nama*      : " + data.nama + "\n" +
+        "• *WhatsApp*  : " + data.wa   + "\n" +
         "━━━━━━━━━━━━━━━━━━━━━━━\n" +
-        "📅 *Tanggal*   : " + formatTanggal(data.tanggal) + "\n" +
-        "🕐 *Jam*       : " + data.jam + " WIB\n" +
-        "👥 *Jumlah*    : " + data.pax + " orang\n" +
+        "• *Tanggal*   : " + formatTanggal(data.tanggal) + "\n" +
+        "• *Jam*       : " + data.jam + " WIB\n" +
+        "• *Jumlah*    : " + data.pax + " orang\n" +
         "🪑 *Tempat*    : " + data.tempat + "\n" +
         "━━━━━━━━━━━━━━━━━━━━━━━\n" +
-        "📝 *Catatan*   : " + data.catatan + "\n\n" +
-        "Mohon konfirmasi ketersediaan meja. Terima kasih! 🙏";
+        "• *Catatan*   : " + data.catatan + "\n\n" +
+        "Mohon konfirmasi ketersediaan meja. Terima kasih! •";
 
       // Buka WhatsApp dengan pesan yang sudah diformat
       // noopener,noreferrer untuk keamanan (cegah tabnapping)
@@ -2446,7 +2455,7 @@
 
       // Tutup modal & tampilkan notifikasi sukses
       closeReservasi();
-      toast('✅ Reservasi dikirim via WhatsApp!');
+      toast('• Reservasi dikirim via WhatsApp!');
 
       // ── Anti-Spam: Rate Limiting / Cooldown Tombol ───────────────────────
       // Nonaktifkan tombol submit selama 10 detik agar tidak dispam klik
